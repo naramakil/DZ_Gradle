@@ -5,13 +5,13 @@ import org.testng.annotations.Test;
 
 public class CashbackHackServiceTest {
 
-    // Тест: если сумма равна 0, нужно докупить до первой тысячи (1000)
+    // ❗ Этот тест должен упасть — здесь мы обнаружим баг
     @Test
-    public void testRemainWhenAmountIsZero() {
+    public void testRemainWhenAmountIsExactlyThousand_ShouldReturnZero() {
         CashbackHackService service = new CashbackHackService();
-        int actual = service.remain(0);
-        int expected = 1000;
-        Assert.assertEquals(actual, expected);
+        int actual = service.remain(1000);
+        int expected = 0;
+        Assert.assertEquals(expected, actual);
     }
 
     // Тест: если сумма точно равна 1000, то нужно докупить ещё 1000 (следующая полная тысяча)
